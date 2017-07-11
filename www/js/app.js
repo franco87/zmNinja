@@ -3,7 +3,7 @@
 /* global cordova,StatusBar,angular,console,alert,PushNotification, moment ,ionic, URI,Packery, ConnectSDK, CryptoJS, ContactFindOptions, localforage,$, Connection, MobileAccessibility, hello */
 
 // For desktop versions, this is replaced
-// with actual app version from config.xml by the 
+// with actual app version from config.xml by the
 // ./make_desktop.sh script
 
 // For mobile versions, I use cordova app version plugin
@@ -136,8 +136,8 @@ angular.module('zmApp', [
 
             angular.forEach(input, function (item) {
 
-                if ((item.Monitor.Function != 'None') && 
-                    (item.Monitor.Enabled != '0')  
+                if ((item.Monitor.Function != 'None') &&
+                    (item.Monitor.Enabled != '0')
                      ) {
                     out.push(item);
                 }
@@ -240,7 +240,7 @@ angular.module('zmApp', [
     })
 
     // this can be used to route img-src through interceptors. Works well, but when
-    // nph-zms streams images it doesn't work as success is never received 
+    // nph-zms streams images it doesn't work as success is never received
     // (keeps reading data). Hence not using it now
     //credit: http://stackoverflow.com/questions/34958575/intercepting-img-src-via-http-interceptor-as-well-as-not-lose-the-ability-to-kee
     .directive('httpSrc', [
@@ -422,7 +422,7 @@ angular.module('zmApp', [
     ])
 
     //------------------------------------------------------------------
-    // this directive will be called any time an image completes loading 
+    // this directive will be called any time an image completes loading
     // via img tags where this directive is added (I am using this in
     // events and monitor view to show a loader while the image is
     // downloading from ZM
@@ -474,7 +474,7 @@ angular.module('zmApp', [
 
                     });
 
-                    // show an image-missing image 
+                    // show an image-missing image
                     $element.bind('error', function () {
                         // console.log ("DIRECTIVE: IMAGE ERROR");
                         loader.remove();
@@ -502,7 +502,7 @@ angular.module('zmApp', [
                                 //console.log ("rendered");
 
                                 // lets wait for 2 frames for animation
-                                // to render - hoping this will improve tear 
+                                // to render - hoping this will improve tear
                                 // of images
                                 ionic.DomUtil.requestAnimationFrame(
                                     function () {
@@ -843,7 +843,7 @@ angular.module('zmApp', [
 
             console.log(">>>>>>>>>>> DO LOGIN");
 
-            
+
             NVRDataModel.processFastLogin()
                 // coming here means login not needed, old login is valid
                 .then(function (success) {
@@ -941,11 +941,11 @@ angular.module('zmApp', [
                                     duration: zm.httpTimeout
                                 });
                             }
-                            
-                  
 
 
-                            
+
+
+
 
                             console.log(">>>>>>>>>>>>>> ISRECAPTCHA");
 
@@ -1005,7 +1005,7 @@ angular.module('zmApp', [
                                 $rootScope.loggedIntoZm = 1;
                                 $rootScope.$emit('auth-error', "incorrect credentials");
                                 }
-                            
+
                             );
 
                             return (d.promise);
@@ -1071,7 +1071,7 @@ angular.module('zmApp', [
                                         return (d.promise);
                                     }
 
-                                    // Now go ahead and re-get auth key 
+                                    // Now go ahead and re-get auth key
                                     // if login was a success
                                     $rootScope.authSession = "undefined";
                                     var ld = NVRDataModel.getLogin();
@@ -1280,7 +1280,7 @@ angular.module('zmApp', [
         window.addEventListener("resize", checkOrientation, false);
 
         // we come here when a user forcibly cancels portal auth
-        // useful when you know your auth won't succeed and you need to 
+        // useful when you know your auth won't succeed and you need to
         // switch to another server
         $rootScope.cancelAuth = function () {
             $ionicLoading.hide();
@@ -1320,7 +1320,7 @@ angular.module('zmApp', [
             } else {
                 NVRDataModel.log("In Auth State trans: Not logged in, requested to go to " + JSON.stringify(toState));
                 // event.preventDefault();
-                // 
+                //
 
                 $state.transitionTo('login');
 
@@ -1407,7 +1407,7 @@ angular.module('zmApp', [
 
             NVRDataModel.log("You are running on " + $rootScope.platformOS);
 
-            if (window.cordova)
+           if (window.cordova)
                 MobileAccessibility.getTextZoom(getTextZoomCallback);
 
             // $rootScope.lastState = "events";
@@ -1551,7 +1551,7 @@ angular.module('zmApp', [
                     StatusBar.backgroundColorByHexString("#2980b9");
                 }
 
-                if (window.cordova) {
+               if (window.cordova) {
                     $cordovaSplashscreen.hide();
 
 
@@ -1693,7 +1693,7 @@ angular.module('zmApp', [
                             disableBack: true
                         });
 
-                        // remember the last state so we can 
+                        // remember the last state so we can
                         // go back there after auth
                         if ($ionicHistory.currentView()) {
                             $rootScope.lastState = $ionicHistory.currentView().stateName;
@@ -1741,7 +1741,7 @@ angular.module('zmApp', [
                     $interval.cancel($rootScope.intervalHandle);
 
                     NVRDataModel.log("ROOT APP: Stopping network pull...");
-                    window.stop(); // dont call stopNetwork - we need to stop here 
+                    window.stop(); // dont call stopNetwork - we need to stop here
 
                     var ld = NVRDataModel.getLogin();
 
@@ -1775,7 +1775,7 @@ angular.module('zmApp', [
         //$logProvider.debugEnabled(false);
         //$compileProvider.debugInfoEnabled(false);
 
-        // This is an exception interceptor so it can show up in app logs 
+        // This is an exception interceptor so it can show up in app logs
         // if they occur. I suspect digest and other errors will be useful
         // for me to see
         //$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|cdvphotolibrary):/);
@@ -2117,7 +2117,7 @@ angular.module('zmApp', [
 
             });
 
-        // We are NOT going to default route. Routing to a view will start on 
-        // a broadcast of "init-complete" 
+        // We are NOT going to default route. Routing to a view will start on
+        // a broadcast of "init-complete"
 
     }); //config
